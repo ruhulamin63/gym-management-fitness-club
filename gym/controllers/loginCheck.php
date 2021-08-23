@@ -14,6 +14,7 @@
 
 		while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)){
 
+			$id=$row['ID'];
 			$password=$row['PASSWORD'];
 			$type=$row['TYPE'];
 			$name=$row['NAME'];
@@ -21,30 +22,42 @@
 			$address=$row['ADDRESS'];
 			$gender=$row['GENDER'];
 			$qualification=$row['QUALIFICATION'];
+		//}
+		
 
-			if($m_email==$email and $m_password==$password){
+		if($m_email==$email and $m_password==$password){
+
+				//$_SESSION['type']=$type;
+
 		    	if($type=='Manager'){
 			 		$_SESSION['flag']= true;
 
+			 	// 	$data = getUserByType($type);
+					$_SESSION['type']=$type;
+
 					header("location:../views/manager_dashboard.php");
 
-				}elseif ($type=='Member') {
+				}else if ($type=='Member' || $type=='Trainer') {
 					$_SESSION['flag']= true;
+
+					$_SESSION['type']=$type;
 
 					header("location:../views/m_t_dashboard.php");
 
-				}elseif ($type=='Trainer') {
-					$_SESSION['flag']= true;
-
-					header("location:../views/m_t_dashboard.php");
-
-				}else{
-					echo "Missing...";
 				}
+			}else{
+				//echo "Invalide User....";
+				//break;
+
+				$check='Invalid User';
 			}
 		}
 
-		$_SESSION['type']=$type;
+		if($check){
+			echo $check;
+		}
+
+		//$_SESSION['type']=$type;
 		oci_free_statement($result);
 		//oci_close($conn);
 	}

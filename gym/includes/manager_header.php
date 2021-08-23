@@ -77,26 +77,25 @@
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
                                 <li>
-                                    <a href="../views/m_t_dashboard.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="../views/manager_details.php"><i class="fa fa-user-circle fa-fw"></i> Managers</a>
+                                    <a href="../views/manager_dashboard.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                                 </li>
 
                                 <li>
-                                    <a href="../views/m_t_member_details.php"><i class="fa fa-user-circle fa-fw"></i> Members<span class="fa arrow"></span></a>
+                                    <a href="../views/member_details.php"><i class="fa fa-user-circle fa-fw"></i> Members<span class="fa arrow"></span></a>
 
                                    <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="../views/m_t_member_details.php"><i class="fa fa-list fa-fw"></i>List all Members</a>
+                                            <a href="../views/member_details.php"><i class="fa fa-list fa-fw"></i>List all Members</a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fa fa-plus fa-fw"></i>Program</a>
+                                            <a href="../views/program_details.php"><i class="fa fa-plus fa-fw"></i>Program</a>
                                         </li>
                                           <li>
-                                            <a href="#"><i class="fa fa-address-card"></i>Branch</a>
+                                            <a href="../views/branch_details.php"><i class="fa fa-address-card"></i>Branch</a>
                                         </li>
-
+                                          <li>
+                                            <a href="../views/payment_details.php"><i class="fa fa-plus fa-fw"></i>Payment</a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -105,21 +104,61 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="../views/m_t_trainer_details.php"><i class="fa fa-list fa-fw"></i>List all Trainers</a>
-                                        </li>
-                                        <li>
-                                            <a href="../views/equipment_details.php"><i class="fa fa-plus fa-fw"></i>Equipment</a>
-                                        </li>
-                                        <!-- <li>
-                                            <a href="#"><i class="fa fa-address-card"></i>Branch</a>
+                                            <a href="../views/trainer_details.php"><i class="fa fa-list fa-fw"></i>List all Trainers</a>
                                         </li>
                                           <li>
-                                            <a href="#"><i class="fa fa-plus fa-fw"></i>Payment</a>
-                                        </li> -->
+                                            <a href="../views/update_salary.php"><i class="fa fa-plus fa-fw"></i>Update Salary</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#"><i class="fa fa-plus fa-fw"></i> Add Section<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="../views/addMember.php"><i class="fa fa-plus fa-fw"></i>Add Members</a>
+                                        </li>
+                                          <li>
+                                            <a href="../views/addTrainer.php"><i class="fa fa-plus fa-fw"></i>Add Trainers</a>
+                                        </li>
+                                          <li>
+                                            <a href="../views/addPayment.php"><i class="fa fa-plus fa-fw"></i>Add Payment</a>
+                                        </li>
+                                    </ul>
+                                </li>
+<!-- 
+
+                                <li>
+                                    <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Section<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="../views/editMember.php"><i class="fa fa-pencil" aria-hidden="true"></i>Edit Members</a>
+                                        </li>
+                                          <li>
+                                            <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Edit Trainers</a>
+                                        </li>
+                                          <li>
+                                            <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Update Money</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                 <li>
+                                    <a href="#"><i class="fa fa-trash" aria-hidden="true"></i>Delete Section<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#"><i class="fa fa-trash" aria-hidden="true"></i>Delete Members</a>
+                                        </li>
+                                          <li>
+                                            <a href="#"><i class="fa fa-trash" aria-hidden="true"></i>Delete Trainers</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /.sidebar-collapse -->
                     </div>
                     <!-- /.navbar-static-side -->

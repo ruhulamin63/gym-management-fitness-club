@@ -4,6 +4,10 @@
     if(!isset($_SESSION['flag'])){
         header("location: ../controllers/loginCheck.php");
     }
+
+    	require_once('../models/member_db.php');
+
+	$statement=showMemberDetails();
 ?>
 <!-- ============================================================ -->
 <?php 
@@ -24,7 +28,8 @@
     </div>
     <!-- /.row -->
     <div class="row">
-<?php
+
+    <?php
         if($_SESSION['type']=='Manager'){
     ?>
         <a href="../views/manager_dashboard.php"><button type="button">Back</button></a>
@@ -36,29 +41,22 @@
     <?php
     }
 ?>
-    
 	<a href="../controllers/logout.php"><button type="button" onclick="alert('Are you sure..?')">logout</button></a>
 
 	<center>
-		<form method="post" action="member_details.php">
-			<fieldset>
-				<div class="input-group">
-				  <input type="search" name="mem_id_search" class="form-control rounded" placeholder="Search" aria-label="Search"
-				    aria-describedby="search-addon" />
-				  <input type="submit" name="search_btn" value="Search" class="btn btn-outline-primary">
-				  &nbsp &nbsp&nbsp&nbsp
-				    <input type="submit" name="view_all_btn" value="View All" class="btn btn-outline-primary">
-				</div>
-		  </fieldset>
-		</form>
+		<div class="input-group">
+		  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+		    aria-describedby="search-addon" />
+		  <button type="button" class="btn btn-outline-primary">search</button>	
+		</div>
 	</center>
-
+	
 	<hr>
 <!-- ========================================================= -->
 	<table class="table">
 	  <thead class="thead-dark">
 	    <tr>
-	       <th scope="col">MEM ID</th>
+	       <th scope="col">ID</th>
 	       <th scope="col">NAME</th>
 	       <th scope="col">ADDRESS</th>
 	       <th scope="col">GENDER</th>
@@ -71,64 +69,9 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	
-	<?php 
-		//require_once('../model/db.php');
-		//require_once('../model/JobTitleModel.php');
-		require_once('../models/show_details.php');
-
-		if(isset($_POST['view_all_btn'])){
-
-		$statement=showMemberDetails();
-
-  		while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
-	    	
-  			$_SESSION['MEM_ID']=$row['MEM_ID'];
-
-  			//$get_id=$_SESSION['MEM_ID'];
-
-			echo"<tr>
-					<td>{$row['MEM_ID']}</td>
-					<td>{$row['MEM_NAME']}</td>
-					<td>{$row['MEM_ADDRESS']}</td>
-					<td>{$row['MEM_GENDER']}</td>
-					<td>{$row['MEM_EMAIL']}</td>
-					<td>{$row['MAN_ID']}</td>
-					<td>{$row['T_ID']}</td>
-					<td>{$row['B_ID']}</td>
-					<td>
-						<a href='../controllers/member_edit.php?MEM_ID=$row[MEM_ID]'>Edit</a>
-					</td>
-					<td>
-						<a href='../controllers/member_delete.php?MEM_ID=$row[MEM_ID]'>Delete</a>
-					</td>
-				</tr>";
-			}
-			oci_free_statement($statement);
-		}
-	?>
-
-<!-- ========================================================= -->
-	<?php 
-
-		if(isset($_POST['search_btn'])){
-
-			$mem_id=$_POST['mem_id_search'];
-			//$result=getMemberSearchById($mem_id);
-
-			require_once('../models/db.php');
-
-			$conn = getConnection();
-			$sql = "select * from member where mem_id='{$mem_id}'";
-			$statement=oci_parse($conn,$sql);
-			oci_execute($statement);
-
+	  	<?php
 	  		while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
-		    	
-	  			$_SESSION['MEM_ID']=$row['MEM_ID'];
-
-	  			//$get_id=$_SESSION['MEM_ID'];
-
+		    		
 				echo"<tr>
 						<td>{$row['MEM_ID']}</td>
 						<td>{$row['MEM_NAME']}</td>
@@ -139,23 +82,17 @@
 						<td>{$row['T_ID']}</td>
 						<td>{$row['B_ID']}</td>
 						<td>
-							<a href='../controllers/member_edit.php?MEM_ID=$row[MEM_ID]' class='btn btn-primary btn-user btn-block'>Edit</a>
+							<a href='../controllers/#.php?MEM_ID=$row[MEM_ID]'>Edit</a>
 						</td>
 						<td>
-							<a href='../controllers/member_delete.php?MEM_ID=$row[MEM_ID]'>Delete</a>
+							<a href='../controllers/#.php?MEM_ID=$row[MEM_ID]'>Delete</a>
 						</td>
 					</tr>";
 			}
 			oci_free_statement($statement);
-	?>
-
-	  	<!-- ================================================================ -->
-
-		  </tbody>
-		</table>
-	<?php
-		}
-	?>
+	  	?>
+	  </tbody>
+	</table>
 <!-- ========================================================= -->
 
 

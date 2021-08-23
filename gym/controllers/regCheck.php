@@ -5,45 +5,53 @@
 	//require_once('../model/usernameModel.php');
 
 //================================================================
-	if(isset($_POST['submit'])){
+	if(isset($_POST['register'])){
 
-		$name = $_REQUEST['name'];
-		$password = $_REQUEST['password'];
-		$email = $_REQUEST['email'];
-		$address = $_REQUEST['address'];
-		$gender = $_REQUEST['gender'];
-		$qualification = $_REQUEST['qualification'];
-		$type = $_REQUEST['type'];
+		$name = $_POST['name'];
+		$password = $_POST['password'];
+		$email = $_POST['email'];
+		$address = $_POST['address'];
+		$gender = $_POST['gender'];
+		$qualification = $_POST['qualification'];
+		$type = $_POST['type'];
 
 //=========================================================================
 	
-		$count = EmailQuery($email);
+		//$count = EmailQuery($email);
 
 		//print_r($count);
 
-		if($count>0){
-			echo "Email Already Exits";
-		}else{
+		// if($count>0){
+		// 	echo "Email Already Exits";
+		// }else{
 
 			$user = [	
 					'name'=>$name,
-					'password'=>$password,
 					'email'=> $email,
+					'password'=>$password,
 					'address'=>$address,
 					'gender'=>$gender,
-					'department'=>$department,
+					'qualification'=>$qualification,
 					'type'=>$type
 				];
 				
 			$status = insertUser($user);
 
 			if($status){
-				echo "success";	
-				header('location: ../views/login.php');			
+		?>
+			<script type="text/javascript">
+				alert('Inserted data in database');
+			</script>
+		<?php
+				header('location: ../controllers/loginCheck.php');			
 			}else{
-				echo "missing Information";
+		?>
+			<script type="text/javascript">
+				alert('Missing Data Input...!');
+			</script>
+		<?php
 			}
-		}
+		//}
 	}
 ?>
 
@@ -110,27 +118,27 @@
 								<label class="control-label">Gender</label>
 								<select name="gender" class="form-control">
 									<option value="">-Choose-</option>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-									<option value="others">Others</option>
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+									<option value="Others">Others</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label class="control-label">Qualification</label>
 								<select name="qualification" class="form-control">
 									<option value="">-Choose-</option>
-									<option value="education">Education</option>
-									<option value="job">Job</option>
-									<option value="others">Others</option>
+									<option value="Education">Education</option>
+									<option value="Job">Job</option>
+									<option value="Others">Others</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label class="control-label">Type</label>
 								<select name="type" class="form-control">
 									<option value="">-Choose-</option>
-									<option value="manager">Manager</option>
-									<option value="member">Member</option>
-									<option value="trainer">Trainer</option>
+									<option value="Manager">Manager</option>
+									<option value="Member">Member</option>
+									<option value="Trainer">Trainer</option>
 								</select>
 							</div>
 							

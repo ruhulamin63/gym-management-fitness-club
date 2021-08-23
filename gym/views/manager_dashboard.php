@@ -8,7 +8,12 @@
 
 <?php 
     $title= "Manager Dashboard";
-    include('../includes/manager_heder.php');
+    
+    if($_SESSION['type']=='Manager'){
+        include('../includes/manager_header.php');
+    }else{
+        include('../includes/header.php');
+    }
 ?>
 <div id="page-wrapper">
     <div class="row">
@@ -33,28 +38,6 @@
                     </div>
                 </div>
                 <a href="../views/member_details.php">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">soon</div>
-                            <div>New Tasks!</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -98,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="../views/payment_details.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -121,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="../views/branch_details.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -139,12 +122,12 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">Thusday</div>
+                            <div class="huge">%%</div>
                             <div>Program</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="../views/program_details.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

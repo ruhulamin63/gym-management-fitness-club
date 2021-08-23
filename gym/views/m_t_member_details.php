@@ -40,7 +40,7 @@
 	<a href="../controllers/logout.php"><button type="button" onclick="alert('Are you sure..?')">logout</button></a>
 
 	<center>
-		<form method="post" action="member_details.php">
+		<form method="post" action="m_t_member_details.php">
 			<fieldset>
 				<div class="input-group">
 				  <input type="search" name="mem_id_search" class="form-control rounded" placeholder="Search" aria-label="Search"
@@ -55,6 +55,17 @@
 
 	<hr>
 <!-- ========================================================= -->
+
+	
+	<?php 
+		//require_once('../model/db.php');
+		//require_once('../model/JobTitleModel.php');
+		require_once('../models/show_details.php');
+
+		if(isset($_POST['view_all_btn'])){
+
+	?>
+
 	<table class="table">
 	  <thead class="thead-dark">
 	    <tr>
@@ -66,18 +77,10 @@
 	       <th scope="col">Manager ID</th>
 	       <th scope="col">Triner ID</th>
 	       <th scope="col">Branch ID</th>
-	       <th scope="col">Edit</th>
-	       <th scope="col">Delete</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-	
-	<?php 
-		//require_once('../model/db.php');
-		//require_once('../model/JobTitleModel.php');
-		require_once('../models/show_details.php');
-
-		if(isset($_POST['view_all_btn'])){
+	<?php
 
 		$statement=showMemberDetails();
 
@@ -96,12 +99,6 @@
 					<td>{$row['MAN_ID']}</td>
 					<td>{$row['T_ID']}</td>
 					<td>{$row['B_ID']}</td>
-					<td>
-						<a href='../controllers/member_edit.php?MEM_ID=$row[MEM_ID]'>Edit</a>
-					</td>
-					<td>
-						<a href='../controllers/member_delete.php?MEM_ID=$row[MEM_ID]'>Delete</a>
-					</td>
 				</tr>";
 			}
 			oci_free_statement($statement);
@@ -110,9 +107,29 @@
 
 <!-- ========================================================= -->
 	<?php 
+		//require_once('../model/db.php');
+		//require_once('../model/JobTitleModel.php');
 
 		if(isset($_POST['search_btn'])){
 
+	?>
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		       <th scope="col">MEM ID</th>
+		       <th scope="col">NAME</th>
+		       <th scope="col">ADDRESS</th>
+		       <th scope="col">GENDER</th>
+		       <th scope="col">EMAIL</th>
+		       <th scope="col">Manager ID</th>
+		       <th scope="col">Triner ID</th>
+		       <th scope="col">Branch ID</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+	<?php
+		
 			$mem_id=$_POST['mem_id_search'];
 			//$result=getMemberSearchById($mem_id);
 
@@ -138,12 +155,6 @@
 						<td>{$row['MAN_ID']}</td>
 						<td>{$row['T_ID']}</td>
 						<td>{$row['B_ID']}</td>
-						<td>
-							<a href='../controllers/member_edit.php?MEM_ID=$row[MEM_ID]' class='btn btn-primary btn-user btn-block'>Edit</a>
-						</td>
-						<td>
-							<a href='../controllers/member_delete.php?MEM_ID=$row[MEM_ID]'>Delete</a>
-						</td>
 					</tr>";
 			}
 			oci_free_statement($statement);
