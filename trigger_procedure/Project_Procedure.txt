@@ -1,0 +1,39 @@
+
+=======================Insert Member Procedure============================
+
+create or replace procedure memberInsertData(mem_name varchar,mem_address varchar, mem_gender varchar,mem_email varchar, man_id varchar, p_id varchar, t_id varchar, b_id varchar)
+is
+
+begin
+
+insert into member(mem_id, mem_name,  mem_address, mem_gender, mem_email, man_id, p_id, t_id, b_id) values(membersq.nextval, mem_name,  mem_address, mem_gender, mem_email, man_id, p_id, t_id, b_id);
+
+end;
+
+
+
+==========================Add Trainer Procedure=============================
+
+create or replace procedure trainerInsertData(t_name varchar, t_gender varchar, t_address varchar, t_email varchar, t_salary varchar, man_id varchar, b_id varchar)
+is
+
+begin
+
+insert into trainer(t_id, t_name, t_gender, t_address, t_email, t_salary, man_id, b_id) values(tainersq.nextval, t_name, t_gender, t_address, t_email, t_salary, man_id, b_id);
+
+end;
+
+
+
+================================Insert Program Procedure===============================
+
+create or replace procedure programAddData(cost varchar, duration varchar, mem_id varchar)
+is
+
+begin
+
+insert into program(pro_id, cost ,  duration , mem_id) values(programsq.nextval, cost ,  duration , mem_id);
+
+end;
+
+##############################-----------------End Procedure------------------***************************************

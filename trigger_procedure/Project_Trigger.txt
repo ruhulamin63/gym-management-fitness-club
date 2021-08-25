@@ -1,0 +1,64 @@
+
+========================================Update Salary==========================================
+
+create or replace trigger salary_change_monitor
+before update of t_salary on trainer
+for each row
+begin
+if ((:new.t_salary/:old.t_salary) >= 1.2 )  [coment=> 20% salary update]
+then
+ RAISE_APPLICATION_ERROR(-20004, 'Warning: Large percentage change in salary prohibited.');
+end if;
+end;
+
+update trainer set t_salary=t_salary+2000 where t_id=300
+
+
+
+
+========================================Add Trainer=============================================
+
+Create or replace trigger trainer_insert_security
+before insert on trainer
+begin
+if (to_char(sysdate,'DY') in ('FRI','SAT') or to_char(sysdate,'HH24') not between '08' and '17')
+then
+raise_application_error(-20222,'You better come in regular working hour');
+end if;
+end;
+
+
+
+========================================Add Payment=============================================
+
+Create or replace trigger payment_insert_security
+before insert on payment
+begin
+if (to_char(sysdate,'DY') in ('FRI','SAT') or to_char(sysdate,'HH24') not between '08' and '17')
+then
+raise_application_error(-20222,'You can insert regular working hour');
+end if;
+end;
+
+
+
+=======================Delete Member=========================
+
+Create or replace trigger delete_member
+after delete on member
+begin
+dbms_output.put_line('Delete From member tabel');
+end;
+ 
+
+
+====================================Update Member============================
+
+Create or replace trigger member_edit_page
+before update on member
+begin
+dbms_output.put_line('Member list data updated .');
+end if;
+end;
+
+####################--------------End Trigger-----------******************************
