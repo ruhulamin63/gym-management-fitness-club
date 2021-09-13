@@ -85,7 +85,7 @@
 
 		$statement=showMemberDetails();
 
-  		while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+  		while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
 	    	
   			$_SESSION['MEM_ID']=$row['MEM_ID'];
 
@@ -102,7 +102,7 @@
 					<td>{$row['B_ID']}</td>
 				</tr>";
 			}
-			oci_free_statement($statement);
+			//oci_free_statement($statement);
 		}
 	?>
 
@@ -123,10 +123,10 @@
 
 			$conn = getConnection();
 			$sql = "select * from member where mem_id='{$mem_id}'";
-			$statement=oci_parse($conn,$sql);
-			oci_execute($statement);
+			$result=sqlsrv_query($conn,$sql);
+			//oci_execute($statement);
 
-	  		while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+	  		while($row=sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
 		    	
 	  			$_SESSION['MEM_ID']=$row['MEM_ID'];
 
@@ -143,7 +143,7 @@
 						<td>{$row['B_ID']}</td>
 					</tr>";
 			}
-			oci_free_statement($statement);
+			//oci_free_statement($statement);
 	?>
 
 	  	<!-- ================================================================ -->

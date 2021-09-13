@@ -63,7 +63,7 @@
       </thead>
       <tbody>
       	<?php
-      		while(($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS))!=false){
+      		while(($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC))!=false){
     			
     			echo "<tr>\n";
     	    		
@@ -73,7 +73,7 @@
     	        }
     			echo "</tr>\n";	 
     		}
-    		oci_free_statement($statement);
+    		//oci_free_statement($statement);
       	?>
       </tbody>
     </table>

@@ -24,13 +24,13 @@
 		
 		$sql="call programAddData('".$cost."', '".$duration."', '".$mem_id."')";
 
-		$status=oci_parse($conn,$sql);
-    	$res=oci_execute($status);
+		$status=sqlsrv_query($conn,$sql);
+    	//$res=oci_execute($status);
 
 
 		 //$status = AddMemberInsertData($user);
 
-		if($res){
+		if($status){
 			//echo "Successfully inserted!";
 			?>
 				<script type="text/javascript">

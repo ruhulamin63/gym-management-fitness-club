@@ -75,7 +75,7 @@
 
         $statement=showBranchDetails();
 
-        while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+        while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
                 
             echo"<tr>
                     <td>{$row['B_ID']}</td>
@@ -86,7 +86,7 @@
                     <td>{$row['MAN_EMAIL']}</td>				
                 </tr>";
         }
-        oci_free_statement($statement);
+        //oci_free_statement($statement);
     }
 ?>
 <!-- ========================================================= -->
@@ -101,10 +101,10 @@
         $conn = getConnection();
         $sql = "select b.b_id,b.b_name,b.location,bb.b_phone,m.man_name,m.man_email
 		from branch b,branch_1 bb,manager m where b.b_id=bb.b_id and b.b_id=m.b_id and b.b_id='{$b_id}'";
-        $statement=oci_parse($conn,$sql);
-        oci_execute($statement);
+        $status=sqlsrv_query($conn,$sql);
+        //oci_execute($statement);
 
-        while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+        while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
             
             echo"<tr>
                 <td>{$row['B_ID']}</td>
@@ -115,7 +115,7 @@
                 <td>{$row['MAN_EMAIL']}</td>				
             </tr>";
         }
-        oci_free_statement($statement);
+        //oci_free_statement($statement);
     }
 ?>
 

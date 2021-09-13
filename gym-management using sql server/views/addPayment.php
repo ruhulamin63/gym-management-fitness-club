@@ -23,13 +23,13 @@
 		$conn=getConnection();
 		$sql="insert into payment(p_id,mem_id,amount,payment_date,man_id) VALUES(paymentsq.nextval,'$mem_id','$amount','$payment','$man_id')";
 		
-		$status=oci_parse($conn,$sql);
-    	$res=oci_execute($status);
+		$status=sqlsrv_query($conn,$sql);
+    	//$res=oci_execute($status);
 
 
 		 //$status = AddMemberInsertData($user);
 
-		if($res){
+		if($status){
 			//echo "Successfully inserted!";
 			?>
 				<script type="text/javascript">

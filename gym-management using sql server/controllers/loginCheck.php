@@ -2,7 +2,7 @@
 	session_start();
 
 	require_once('../models/UserModel.php');
-	//require_once('../models/db.php');
+	require_once('../models/db.php');
 
 	if(isset($_POST['login'])){
 
@@ -10,7 +10,11 @@
 		$m_password = $_REQUEST['password'];
 		// $m_type = $_REQUEST['type'];
 
-		$result=validateUser();
+		//$result=validateUser();
+
+		$conn=getConnection();
+		$sql="select * from register";
+		$result=sqlsrv_query($conn,$sql);
 
 		//echo $result;
 

@@ -83,7 +83,7 @@
 
         if(isset($_POST['view_all_btn'])){
 
-      		while(($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS))!=false){
+      		while(($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC))!=false){
     			
     		// 	echo "<tr>\n";
     	    		
@@ -114,7 +114,7 @@
                         </td>
                     </tr>";
             }
-            oci_free_statement($statement);
+            //oci_free_statement($statement);
         }
     ?>
 
@@ -129,10 +129,10 @@
             $conn = getConnection();
             //$sql = "select * from trainer where t_id='{$t_id}'";
             $sql="select t.t_id,t.t_name,t.t_gender,t.t_address,t.t_email,t.t_salary,b.b_name,b.location from trainer t,branch b where t.b_id=b.b_id and t_id='{$t_id}'";
-            $statement=oci_parse($conn,$sql);
-            oci_execute($statement);
+            $statement=sqlsrv_query($conn,$sql);
+            //oci_execute($statement);
 
-            while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+            while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
                 
                 //$_SESSION['MEM_ID']=$row['MEM_ID'];
 
@@ -155,7 +155,7 @@
                         </td>
                     </tr>";
             }
-            oci_free_statement($statement);
+            //oci_free_statement($statement);
     ?>
           </tbody>
         </table>

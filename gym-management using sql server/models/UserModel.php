@@ -22,6 +22,7 @@
 		$conn = getConnection();
 		$sql = "select * from register where type='{$type}'";
 		$status=sqlsrv_query($conn,$sql);
+		
 		$row = sqlsrv_fetch_assoc($status);
 
 		return $row;

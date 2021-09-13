@@ -26,10 +26,10 @@
 		
 		$sql="call memberInsertData('".$mem_name."', '".$mem_address."', '".$mem_gender."', '".$mem_email."', '".$man_id."', '".$p_id."', '".$t_id."',  '".$b_id."')";
 		
-		$status=oci_parse($conn,$sql);
-    	$res=oci_execute($status);
+		$status=sqlsrv_query($conn,$sql);
+    	//$res=oci_execute($status);
 
-		if($res){
+		if($status){
 			//echo "Successfully inserted!";
 			?>
 				<script type="text/javascript">

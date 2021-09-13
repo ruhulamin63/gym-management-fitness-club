@@ -93,7 +93,7 @@
 
             if(isset($_POST['view_all_btn'])){
 
-                while(($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS))!=false){
+                while(($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC))!=false){
 
                     echo"<tr>
                             <td>{$row['MAN_ID']}</td>
@@ -105,7 +105,7 @@
                             <td>{$row['LOCATION']}</td>
                         </tr>";
                     }
-                    oci_free_statement($statement);
+                    //oci_free_statement($statement);
             }
       	?>
 
@@ -121,10 +121,10 @@
                 //$sql = "select * from manager where t_id='{$t_id}'";
                 $sql="select m.man_id,m.man_name,m.man_email,m.man_address,mm.man_phone,b.b_name,b.location
                     from manager m,manager_1 mm,branch b where m.man_id=mm.man_id and m.b_id=b.b_id and m.man_name='{$man_name}'";
-                $statement=oci_parse($conn,$sql);
-                oci_execute($statement);
+                $statement=sqlsrv_query($conn,$sql);
+                //oci_execute($statement);
 
-                while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+                while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
                     
                     //$_SESSION['MEM_ID']=$row['MEM_ID'];
 
@@ -140,7 +140,7 @@
                             <td>{$row['LOCATION']}</td>
                         </tr>";
                 }
-                oci_free_statement($statement);
+                //oci_free_statement($statement);
             }
         ?>
       </tbody>

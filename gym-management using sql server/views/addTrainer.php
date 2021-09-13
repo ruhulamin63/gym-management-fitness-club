@@ -27,13 +27,13 @@
 		
 		$sql="call trainerInsertData('".$t_name."', '".$t_gender."', '".$t_address."', '".$t_email."', '".$t_salary."', '".$man_id."', '".$b_id."')";
 
-		$status=oci_parse($conn,$sql);
-    	$res=oci_execute($status);
+		$status=sqlsrv_query($conn,$sql);
+    	//$res=oci_execute($status);
 
 
 		 //$status = AddMemberInsertData($user);
 
-		if($res){
+		if($status){
 			//echo "Successfully inserted!";
 			?>
 				<script type="text/javascript">

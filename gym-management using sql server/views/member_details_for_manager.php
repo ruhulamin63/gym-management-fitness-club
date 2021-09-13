@@ -70,7 +70,7 @@
 	  </thead>
 	  <tbody>
 	  	<?php
-	  		while($row=oci_fetch_array($statement,OCI_ASSOC+OCI_RETURN_NULLS)){
+	  		while($row=sqlsrv_fetch_array($statement,SQLSRV_FETCH_ASSOC)){
 		    		
 				echo"<tr>
 						<td>{$row['MEM_ID']}</td>
@@ -89,7 +89,7 @@
 						</td>
 					</tr>";
 			}
-			oci_free_statement($statement);
+			//oci_free_statement($statement);
 	  	?>
 	  </tbody>
 	</table>
